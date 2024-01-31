@@ -6,12 +6,9 @@ import {
 } from './urlGeneratorOptions.interface'
 import { UrlGeneratorService } from './urlGenerator.service'
 import { URL_GENERATOR_MODULE_OPTIONS } from './urlGeneratorOptions.interface'
-import { UrlGeneratorController } from './urlGenerator.controller'
 
 @Global()
-@Module({
-  controllers: [UrlGeneratorController],
-})
+@Module({})
 export class UrlGeneratorModule {
   public static forRoot(options: UrlGeneratorModuleOptions): DynamicModule {
     const urlGeneratorOptionsProvider: ValueProvider<UrlGeneratorModuleOptions> = {
