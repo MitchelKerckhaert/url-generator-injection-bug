@@ -1,6 +1,6 @@
-import { AppController } from '@/app.controller'
 import { UrlGeneratorService } from '@/urlGenerator/urlGenerator.service'
 import { Injectable } from '@nestjs/common'
+import { ProtectedTestController } from './test.controller'
 
 @Injectable()
 export class TestService {
@@ -8,8 +8,8 @@ export class TestService {
 
   getSignedUrl(): string {
     return this._urlGeneratorService.signControllerUrl({
-      controller: AppController,
-      controllerMethod: AppController.prototype.protectedRoute,
+      controller: ProtectedTestController,
+      controllerMethod: ProtectedTestController.prototype.protectedRoute,
     })
   }
 }

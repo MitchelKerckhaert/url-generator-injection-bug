@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common'
+import { Controller, Get, UseGuards } from '@nestjs/common'
 import { TestService } from './test.service'
+import { SignedUrlGuard } from '@/urlGenerator/signedUrlGuard'
 
 @Controller()
 export class TestController {
@@ -8,5 +9,15 @@ export class TestController {
   @Get('get-signed-url')
   async getSignedUrl(): Promise<string> {
     return this._testService.getSignedUrl()
+  }
+}
+
+export class ProtectedTestController {
+  constructor(private readonly _testService: TestService) {}
+
+  @Get('protected')
+  @UseGuards(SignedUrlGuard)
+  protectedRoute(): string {
+    return 'This route can only be accessed using a signed URL'
   }
 }
