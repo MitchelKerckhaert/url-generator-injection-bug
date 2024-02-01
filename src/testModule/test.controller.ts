@@ -12,6 +12,7 @@ export class TestController {
   }
 }
 
+@Controller()
 export class ProtectedTestController {
   constructor(private readonly _testService: TestService) {}
 
