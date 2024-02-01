@@ -12,7 +12,6 @@ import {
   stringifyQuery,
   generateUrl,
   appendQuery,
-  checkIfMethodHasSignedGuardDecorator,
 } from './helpers'
 
 import {
@@ -76,8 +75,6 @@ export class UrlGeneratorService {
     query,
     params,
   }: SignControllerUrlArgs): string {
-    checkIfMethodHasSignedGuardDecorator(controller, controllerMethod)
-
     const controllerMethodFullRoute = getControllerMethodRoute(controller, controllerMethod)
 
     return this.signUrl({
